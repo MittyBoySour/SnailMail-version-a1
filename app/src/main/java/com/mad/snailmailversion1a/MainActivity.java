@@ -154,7 +154,7 @@ public class MainActivity extends AppCompatActivity
         composeMailFAB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                
+
             }
         });
 
