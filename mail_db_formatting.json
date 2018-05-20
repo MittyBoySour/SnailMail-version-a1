@@ -1,0 +1,107 @@
+{
+  "mail" : {
+    "-K2ib4H77rj0LYewF7dP" : {
+      "senderName" : "Miles",
+      "title" : "I foolish",
+      "message" : "whoops"
+    },
+    "-K2ib5JHRbbL0NrztUfO" : {
+      "senderName" : "Candice",
+      "title" : "Totally",
+      "message" : "me again"
+    },
+    "-K2ib62mjHh34CAUbide" : {
+      "senderName" : "Dan",
+      "title" : "Hey oh",
+      "message" : "sup dude"
+    }
+  }
+}
+
+// gotta find a way to make it so that we can change user's display name based on the user that is viewing their mail
+
+mail : { key(x) : { ... } } <== key(x) will be auto-generated
+
+user : { accName(x) : { ... } } <== accName(x) will be based on Google Account name
+
+location : { } <== geofence location instance from Google MAPs API
+
+{
+  "mail" : {
+    "mailKey1" : {
+      "sender" : "billy"
+    },
+    "key2" : {
+      "sender" : "trevor",
+      "title" : "back again",
+      "message" : "in town again mate",
+      "timeSent" : "2018-03-04 19:02:08"
+    }
+  },
+  "user" : {
+    "accName" : {
+
+    },
+    "accName" : {
+
+    }
+  },
+  "location" : {
+    "geofenceLocationKey1" : {
+      "... location data ..."
+    },
+    "geofenceLocationKey2" : {
+      "... location data ..."
+    }
+  }
+}
+
+
+// when user sends mail, distance is calculated between
+
+// best method of storage
+
+user : { accName : { ... } } <== accName will be based on Google Account name
+mail : { mailKey(x) : { ... } } <== key(x) will be auto-generated
+
+{
+  "user" : {
+    "HarveyNew123" : {
+      "mail" : {
+        "mailKey1" : {
+          "sender" : "Tuckerbad334",
+          "title" : "wassup",
+          "message" : "dude totally back",
+          "timeSent" : "2018-03-04 18:34:12",
+          "geofenceReferenceId" : "dynamicRefId1"
+        },
+        "mailKey2" : {
+          "sender" : "HyperVJ12",
+          "title" : "back again",
+          "message" : "in town again mate",
+          "timeSent" : "2018-03-04 19:02:08"
+        }
+      },
+      "contacts" : {
+        "TuckerBad334" : {
+          "nickname" : "trevor"
+        },
+        "HyperVJ12" : {
+          "nickname" : "harper"
+        },
+      },
+      "preferences" : {
+
+      },
+      "name" : "Harvey Tims"
+    },
+    "TuckerBad334" : {
+
+    }
+  },
+  "geofenceReference" : {
+    "dynamicRefId1" : {
+      "... coordinates / data ..." : "..."
+    }
+  }
+}

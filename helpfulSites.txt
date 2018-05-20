@@ -1,0 +1,28 @@
+Helpful Sites
+
+-Google Authentication:
+
+https://developers.google.com/identity/sign-in/android/sign-in
+https://firebase.google.com/docs/auth/android/google-signin
+https://developers.google.com/identity/sign-in/android/
+
+--Google APIs:
+
+https://console.developers.google.com/apis/api/identitytoolkit.googleapis.com/overview?project=snailmailversion1a&duration=PT1H
+
+--Firebase:
+
+Codelab:
+https://codelabs.developers.google.com/codelabs/firebase-android/index.html?index=..%2F..%2Findex#5
+
+github:
+https://github.com/firebase/friendlychat-android/blob/master/android-start/
+
+console:
+https://console.firebase.google.com/project/snailmailversion1a/
+
+users:
+https://firebase.google.com/docs/auth/users
+
+RecyclerView:
+https://www.learnhowtoprogram.com/android/data-persistence/firebase-recycleradapter
