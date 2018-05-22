@@ -34,6 +34,7 @@ import com.google.firebase.database.FirebaseDatabase;
 public class MainActivity extends AppCompatActivity
         implements GoogleApiClient.OnConnectionFailedListener {
 
+    // TODO: move to separate recycler class maybe
     public static class SnailMailViewHolder extends RecyclerView.ViewHolder {
         TextView mailTitleTv;
         TextView mailSenderNameTv;
@@ -49,6 +50,8 @@ public class MainActivity extends AppCompatActivity
     private static final String USER_MAIL_FILTER = "mail";
     public static final String ANONYMOUS = "anonymous";
     private static final String TAG = "MainActivity";
+    private static final int MAIL_COMPOSITION_REQUEST = 203;
+    private static final int MAIL_COMPOSITION_RESULT_SEND = 101;
 
     private GoogleApiClient mGoogleApiClient;
     private String mUsername;
@@ -129,6 +132,7 @@ public class MainActivity extends AppCompatActivity
                         .setQuery(userMailQuery, parser)
                         .build();
 
+        // TODO: move with viewholder to new class
         mFirebaseAdapter = new FirebaseRecyclerAdapter<SnailMail, SnailMailViewHolder>(options) {
             @Override
             public SnailMailViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
@@ -154,10 +158,29 @@ public class MainActivity extends AppCompatActivity
         composeMailFAB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Intent i = new Intent(MainActivity.this, MailCompositionActivity.class);
+                startActivityForResult(i, MAIL_COMPOSITION_REQUEST);
             }
         });
 
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        switch(requestCode) {
+            case MAIL_COMPOSITION_REQUEST:
+                if (resultCode == MAIL_COMPOSITION_RESULT_SEND) {
+                    mFirebaseDatabaseReference.child(USER_FILTER)
+                            .child(mFirebaseUser.getUid())
+                            .child(USER_MAIL_FILTER)
+                            .push().setValue(data); // need to validate that this is sm object
+                }
+                break;
+            default:
+                break;
+        }
     }
 
     @Override

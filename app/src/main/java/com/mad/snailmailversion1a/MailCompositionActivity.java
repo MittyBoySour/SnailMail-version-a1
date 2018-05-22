@@ -8,6 +8,8 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseReference;
 
 public class MailCompositionActivity extends AppCompatActivity {
 
@@ -17,6 +19,10 @@ public class MailCompositionActivity extends AppCompatActivity {
 
     private EditText titleET;
     private EditText messageET;
+    private DataSnapshot mFirebaseDatabaseReference;
+
+    private static final String USER_FILTER = "user";
+    private static final String USER_MAIL_FILTER = "mail";
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -24,6 +30,7 @@ public class MailCompositionActivity extends AppCompatActivity {
         setContentView(R.layout.activity_mail_composition);
 
         titleET = (EditText)findViewById(R.id.composition_title);
+        messageET = (EditText)findViewById(R.id.composition_message);
 
         mSendMailButton = (Button) findViewById(R.id.send);
         mSendMailButton.setOnClickListener(new View.OnClickListener() {
@@ -34,7 +41,12 @@ public class MailCompositionActivity extends AppCompatActivity {
                 snailMail.setSenderName(mFirebaseUser.getDisplayName());
                 snailMail.setTitle(titleET.getText().toString());
                 snailMail.setMessage(messageET.getText().toString());
+
+                // start intent to send back new snailmail object
+
             }
         });
+
+
     }
 }
